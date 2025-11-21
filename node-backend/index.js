@@ -5,9 +5,11 @@ import connectDB from "./database/connectDB.js";
 import "dotenv/config";
 
 const app = express();
-const PORT = 3005;
+const PORT = process.env.PORT || 3005;
+const DB_URL = process.env.DB_URL || "mongodb://localhost:27017/test";
+const MONGO_URI = process.env.MONGO_URI;
 
-connectDB("mongodb://localhost:27017/test");
+connectDB(MONGO_URI);
 app.use(express.json());
 app.use(cors());
 
