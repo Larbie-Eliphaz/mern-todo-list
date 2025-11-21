@@ -7,12 +7,12 @@ import CreateTodo from "./CreateTodo.jsx";
 function App() {
   const [todos, setTodos] = useState([]);
   const addTodo = async (newTodo) => {
-    await axios.post("http://localhost:3005/api/addtodo", newTodo);
+    await axios.post("https://mern-todo-list-kzdb.onrender.com", newTodo);
   };
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:3005/api/findall");
+      const response = await axios.get("https://mern-todo-list-kzdb.onrender.com");
       setTodos(response.data);
     } catch (error) {
       console.error(error);
@@ -24,7 +24,7 @@ function App() {
 
   const onToggle = async (id) => {
     await axios
-      .put("http://localhost:3005/api/updatetodo", { id })
+      .put("https://mern-todo-list-kzdb.onrender.com", { id })
       .then((res) => {
         fetchData();
         console.log(res.data);
@@ -32,7 +32,7 @@ function App() {
   };
   const deleteTodo = async (id) => {
     await axios
-      .delete("http://localhost:3005/api/deletetodo", { data: { _id: id } })
+      .delete("https://mern-todo-list-kzdb.onrender.com", { data: { _id: id } })
       .then((res) => {
         fetchData();
         console.log(res.data);
