@@ -11,7 +11,11 @@ const MONGO_URI = process.env.MONGO_URI;
 
 connectDB(MONGO_URI);
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin:"https://eliphaz-mern-todo-list.netlify.app/",
+  methods:["GET","POST","PUT","DELETE"],
+  credentials:true,
+}));
 
 console.clear();
 app.get("/api/findall", async (req, res) => {
