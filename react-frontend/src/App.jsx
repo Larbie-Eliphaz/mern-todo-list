@@ -3,16 +3,17 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import TodoItem from "./TodoItem.jsx";
 import CreateTodo from "./CreateTodo.jsx";
+const BASE_URL = "https://mern-todo-list-4bvv.onrender.com";
 
 function App() {
   const [todos, setTodos] = useState([]);
   const addTodo = async (newTodo) => {
-    await axios.post("https://mern-todo-list-kzdb.onrender.com", newTodo);
+    await axios.post(BASE_URL, newTodo);
   };
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("https://mern-todo-list-kzdb.onrender.com");
+      const response = await axios.get(BASE_URL);
       setTodos(response.data);
     } catch (error) {
       console.error(error);
@@ -24,7 +25,7 @@ function App() {
 
   const onToggle = async (id) => {
     await axios
-      .put("https://mern-todo-list-kzdb.onrender.com", { id })
+      .put(BASE_URL, { id })
       .then((res) => {
         fetchData();
         console.log(res.data);
@@ -32,7 +33,7 @@ function App() {
   };
   const deleteTodo = async (id) => {
     await axios
-      .delete("https://mern-todo-list-kzdb.onrender.com", { data: { _id: id } })
+      .delete(BASE_URL, { data: { _id: id } })
       .then((res) => {
         fetchData();
         console.log(res.data);
