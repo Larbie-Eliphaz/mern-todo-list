@@ -1,5 +1,5 @@
 import express from "express";
-// import cors from "cors";
+import cors from "cors";
 import todoModel from "./database/todoModel.js";
 import connectDB from "./database/connectDB.js";
 import "dotenv/config";
